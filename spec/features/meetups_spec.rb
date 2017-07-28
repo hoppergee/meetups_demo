@@ -47,6 +47,19 @@ feature 'meetups' do
 
 				expect(page).to have_content 'Rails成都meetup'
 				expect(page).to have_content '聚会、学习、dojo随便你，志同道合，共同努力。'
+				expect(page).to have_button "提交"
+			end
+
+			scenario "should create comment successfully" do
+				visit meetup_path(@meetup)
+
+				within("#comment-form") do
+					fill_in 'comment[content]', with: '大家好，我来报名参加一个。'
+					click_button "提交"
+				end
+
+				expect(page).to have_current_path(meetup_path(@meetup))
+				expect(find("li#comment-#{@meetup.comments.last.id}")).to have_content '大家好，我来报名参加一个。'
 			end
 		end
 	end
