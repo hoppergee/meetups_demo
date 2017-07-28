@@ -1,0 +1,7 @@
+<h1>Create a Meetup</h1>
+
+<%= form_for @meetup, url: meetups_path, html: { id: 'meetup-form' } do |f| %>
+	<%= f.text_field :title %>
+	<%= f.text_area :description %>
+	<%= f.submit "Save" %>
+<% end %>
