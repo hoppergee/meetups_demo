@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 			post "/login" => "auth#login"
 			post "/logout" => "auth#logout"
 
+			get "/meetups" => "meetups#index"
+
 		end
 	end
 end
